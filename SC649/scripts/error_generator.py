@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from cmath import sqrt
-from math import atan
+from cmath import pi, sqrt
+from math import atan, atan2, sin, cos
 import rospy
 from nav_msgs.msg import Odometry
 import numpy as np
@@ -44,8 +44,6 @@ if __name__ == '__main__':
     y_current_arr = []
     theta_current_arr =[]
     for x in range(length):
-        print(robot.bot_pose[0])
-        print(robot.bot_pose[1])
         #generate errors
         time1=waypointdata[x,0]
         x_target=waypointdata[x,1]
@@ -54,9 +52,15 @@ if __name__ == '__main__':
         y_current=robot.bot_pose[1]
         theta_current=robot.bot_th
         Epos = abs(sqrt((x_target-x_current)**2 + (y_target-y_current)**2))
-        ratio = (y_current-y_target)/(x_current-x_target)
-        Etheta =  atan(ratio)
+        theta_target= atan2((y_current-y_target),(x_current-x_target))
+        Etheta = (theta_target - theta_current)
         
+        if(Etheta <= -pi):
+            Etheta = Etheta + 2*pi
+        
+        if(Etheta > pi):
+            Etheta = Etheta - 2*pi
+
         #publish to topic "Error" with message of custom message type "Pose2D" from node named "Error_Generator"
         #pub=rospy.Publisher('/Error',Pose2D,queue_size=10)
         err_msg = Pose2D()

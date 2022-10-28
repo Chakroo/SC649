@@ -2,6 +2,7 @@
 
 import rospy
 from geometry_msgs.msg import Pose2D, Twist
+from math import cos
 
 class SC649:
 
@@ -33,7 +34,7 @@ if __name__ == '__main__':
     while not rospy.is_shutdown():
         Epos = robot.Epos
         Etheta = robot.Etheta
-        v_lin = float(K1)*Epos
+        v_lin = float(K1)*Epos*cos(Etheta)
         v_ang = -1*float(K2)*Etheta
 
         print(v_lin)
