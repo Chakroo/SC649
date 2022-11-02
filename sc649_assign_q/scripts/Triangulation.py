@@ -111,24 +111,23 @@ def programflow():
             Robot_derived_landAB_Position_x = 0
             Robot_derived_landAB_Position_y = 0
 
-
-        T1BC=tan(radians(alpha2_deg)+radians(Robot_actual_Theta_deg))
-        T2BC=tan(radians(alpha3_deg)+radians(Robot_actual_Theta_deg))
-        if (T1BC != T2BC):
-            Robot_derived_landBC_Position_x = (y2 - y3 - x2*T1BC + x3*T2BC)/(T2BC - T1BC)
-            Robot_derived_landBC_Position_y = ((x3 - x2)*T1BC*T2BC + y2*T2BC - y3*T1BC)/(T2BC - T1BC)
-        else:
-            Robot_derived_landBC_Position_x = 0
-            Robot_derived_landBC_Position_y = 0
-
-        T1CA=tan(radians(alpha3_deg)+radians(Robot_actual_Theta_deg))
-        T2CA=tan(radians(alpha1_deg)+radians(Robot_actual_Theta_deg))
-        if (T1CA != T2CA):
-            Robot_derived_landCA_Position_x = (y3 - y1 - x3*T1CA + x1*T2CA)/(T2CA - T1CA)
-            Robot_derived_landCA_Position_y = ((x1 - x3)*T1CA*T2CA + y3*T2CA - y1*T1CA)/(T2CA - T1CA)
+        T1CA=tan(radians(alpha2_deg)+radians(Robot_actual_Theta_deg))
+        T2CA=tan(radians(alpha3_deg)+radians(Robot_actual_Theta_deg))
+        if (T1CA!=T2CA):
+            Robot_derived_landCA_Position_x = (y2 - y3 - x2*T1CA + x3*T2CA)/(T2CA - T1CA)
+            Robot_derived_landCA_Position_y = ((x3 - x2)*T1CA*T2CA + y2*T2CA - y3*T1CA)/(T2CA - T1CA)
         else:
             Robot_derived_landCA_Position_x = 0
             Robot_derived_landCA_Position_y = 0
+
+        T1BC=tan(radians(alpha3_deg)+radians(Robot_actual_Theta_deg))
+        T2BC=tan(radians(alpha1_deg)+radians(Robot_actual_Theta_deg))
+        if(T1BC!=T2BC):
+            Robot_derived_landBC_Position_x=(y3-y1-x3*T1BC+x1*T2BC)/(T2BC-T1BC)
+            Robot_derived_landBC_Position_y=((x1-x3)*T1BC*T2BC+y3*T2BC-y1*T1BC)/(T2BC-T1BC)
+        else:
+            Robot_derived_landBC_Position_x=0
+            Robot_derived_landBC_Position_y=0
 
         #command to the robot
         v_lin = 1
