@@ -194,7 +194,9 @@ def programflow():
     plt.xlabel("X")
     plt.ylabel("Y")
     plt.title("Derived Position_landmark AB vs Actual position")
-    plt.text(1, 3, MSE_AB_text, fontsize=12, bbox=dict(facecolor='red', alpha=0.5))
+    yA=(plt.gca().get_ylim()[1])+0.35
+    xA=((plt.gca().get_xlim()[0]) + (plt.gca().get_xlim()[1]))/2
+    plt.text(xA, yA, MSE_AB_text, fontsize=12, bbox=dict(facecolor='red', alpha=0.5))
     plt.legend()
     plt.savefig('positions_AB.png')
     plt.show()
@@ -204,7 +206,9 @@ def programflow():
     plt.xlabel("X")
     plt.ylabel("Y")
     plt.title("Derived Position_landmark BC vs Actual position")
-    plt.text(1, 3, MSE_BC_text, fontsize=12, bbox=dict(facecolor='red', alpha=0.5))
+    yB=(plt.gca().get_ylim()[1])+0.35
+    xB=((plt.gca().get_xlim()[0]) + (plt.gca().get_xlim()[1]))/2
+    plt.text(xB, yB, MSE_BC_text, fontsize=12, bbox=dict(facecolor='red', alpha=0.5))
     plt.legend()
     plt.savefig('positions_BC.png')
     plt.show()
@@ -214,7 +218,9 @@ def programflow():
     plt.xlabel("X")
     plt.ylabel("Y")
     plt.title("Derived Position_landmark CA vs Actual position")
-    plt.text(1, 3, MSE_CA_text, fontsize=12, bbox=dict(facecolor='red', alpha=0.5))
+    yC=(plt.gca().get_ylim()[1])+0.35
+    xC=((plt.gca().get_xlim()[0]) + (plt.gca().get_xlim()[1]))/2
+    plt.text(xC, yC, MSE_CA_text, fontsize=12, bbox=dict(facecolor='red', alpha=0.5))
     plt.legend()
     plt.savefig('positions_CA.png')
     plt.show()

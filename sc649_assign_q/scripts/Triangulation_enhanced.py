@@ -172,7 +172,9 @@ def programflow():
     plt.xlabel("X")
     plt.ylabel("Y")
     plt.title("Derived Position vs Actual position")
-    plt.text(0, 0, MSE_text, fontsize=12, bbox=dict(facecolor='red', alpha=0.5))
+    yC=(plt.gca().get_ylim()[1])+0.35
+    xC=((plt.gca().get_xlim()[0]) + (plt.gca().get_xlim()[1]))/2
+    plt.text(xC, yC, MSE_text, fontsize=12, bbox=dict(facecolor='red', alpha=0.5))
     plt.legend()
     plt.savefig('positions_enhanced.png')
     plt.show()
